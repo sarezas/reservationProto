@@ -1,0 +1,153 @@
+<!-- <div class='container'>
+  <section class='child'></section>
+  <section class='child'></section>
+  <section class='child'></section>
+  ...
+</div> -->
+<!-- <div class="row">{{ day | slice:0:3 }}</div>
+<div class="row">{{ day | slice:8:10 }}</div> -->
+
+<!-- month calendar start
+<div class="container mt-5" id="calendar">
+  <div class="row mb-2" id="button-wrapper">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary">Day</button>
+      <button type="button" class="btn btn-secondary">Week</button>
+      <button type="button" class="btn btn-secondary">Month</button>
+    </div>
+  </div>
+  <div class="row" id="calendar-wrapper">
+    <div class="col-1" id="day-wrapper" *ngFor="let day of currentMonthDates; let i = index;" (click)="viewDay(i)">
+      <p class="day" id="day-name-short">{{ day | slice:0:3 }}</p>
+      <p class="day" id="day-number">{{ day | slice:8:10 }}</p>
+    </div>
+  </div>
+</div>
+month calendar end -->
+
+<!-- week schedule start -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex" id="month-name">
+        <div class="d-flex flex-fill w-100 justify-content-end p-2">
+          <span class="btn btn-outline-light">
+            <h3 class="caret caret-left">&lsaquo;</h3>
+          </span>
+        </div>
+        <div class="d-flex flex-fill w-100 justify-content-center p-2">
+          <h3>Month, 2019</h3>
+        </div>
+        <div class="d-flex flex-fill w-100 justify-content-start p-2">
+          <span class="btn btn-outline-light">
+            <h3 class="caret caret-right">&rsaquo;</h3>
+          </span>
+        </div>
+      </div>
+      <div class="d-flex" id="week-days">
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2"><i></i></div>
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Mon</div>
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Tue</div>
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Wed</div>
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Thu</div>
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Fri</div>
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Sat</div>
+        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Sun</div>
+      </div>
+      <div class="d-flex hairdresser" id="hairdresser-1">
+        <div class="d-flex flex-fill w-100 justify-content-center"><i>Stylist-1</i></div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+      </div>
+      <div class="d-flex hairdresser" id="hairdresser-2">
+        <div class="d-flex flex-fill w-100 justify-content-center"><i>Stylist-2</i></div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+      </div>
+      <div class="d-flex hairdresser" id="hairdresser-3">
+        <div class="d-flex flex-fill w-100 justify-content-center"><i>Stylist-3</i></div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- week schedule end -->
