@@ -26,7 +26,7 @@
 month calendar end -->
 
 <!-- week schedule start -->
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-12">
       <div class="d-flex" id="month-name">
@@ -36,7 +36,7 @@ month calendar end -->
           </span>
         </div>
         <div class="d-flex flex-fill w-100 justify-content-center p-2">
-          <h3>Month, 2019</h3>
+          <h3>{{ schedule.month }}, {{ schedule.year }}</h3>
         </div>
         <div class="d-flex flex-fill w-100 justify-content-start p-2">
           <span class="btn btn-outline-light">
@@ -46,22 +46,52 @@ month calendar end -->
       </div>
       <div class="d-flex" id="week-days">
         <div class="d-flex day flex-fill w-100 justify-content-center p-2"><i></i></div>
-        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Mon</div>
-        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Tue</div>
-        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Wed</div>
-        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Thu</div>
-        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Fri</div>
-        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Sat</div>
-        <div class="d-flex day flex-fill w-100 justify-content-center p-2">Sun</div>
+        <div class="d-flex flex-column day flex-fill w-100 justify-content-center align-items-center p-2">
+          <p>{{ current | slice:0:3 }}</p>
+          <p>{{ current | slice:7:10 }}</p>
+        </div>
+        <div class="d-flex flex-column day flex-fill w-100 justify-content-center align-items-center p-2">
+          <p>{{ second | slice:0:3 }}</p>
+          <p>{{ second | slice:7:10 }}</p>
+        </div>
+        <div class="d-flex flex-column day flex-fill w-100 justify-content-center align-items-center p-2">
+          <p>{{ third | slice:0:3 }}</p>
+          <p>{{ third | slice:7:10 }}</p>
+        </div>
+        <div class="d-flex flex-column day flex-fill w-100 justify-content-center align-items-center p-2">
+          <p>{{ fourth | slice:0:3 }}</p>
+          <p>{{ fourth | slice:7:10 }}</p>
+        </div>
+        <div class="d-flex flex-column day flex-fill w-100 justify-content-center align-items-center p-2">
+          <p>{{ fifth | slice:0:3 }}</p>
+          <p>{{ fifth | slice:7:10 }}</p>
+        </div>
+        <div class="d-flex flex-column day flex-fill w-100 justify-content-center align-items-center p-2">
+          <p>{{ sixth | slice:0:3 }}</p>
+          <p>{{ sixth | slice:7:10 }}</p>
+        </div>
+        <div class="d-flex flex-column day flex-fill w-100 justify-content-center align-items-center p-2">
+          <p>{{ seventh | slice:0:3 }}</p>
+          <p>{{ seventh | slice:7:10 }}</p>
+        </div>
       </div>
       <div class="d-flex hairdresser" id="hairdresser-1">
-        <div class="d-flex flex-fill w-100 justify-content-center"><i>Stylist-1</i></div>
+        <div class="d-flex flex-fill w-100 justify-content-center">
+          <i>{{ schedule.stylists.stylist1.name }}</i>
+        </div>
         <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
-          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          <div class="d-flex hour flex-fill w-100 justify-content-start" *ngFor="let time of times">
+            {{ time }}
           </div>
         </div>
         <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
-          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let time of times">
+            {{ time }}
+          </div>
+        </div>
+        <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
+          <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let time of times">
+            {{ time }}
           </div>
         </div>
         <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
@@ -86,7 +116,7 @@ month calendar end -->
         </div>
       </div>
       <div class="d-flex hairdresser" id="hairdresser-2">
-        <div class="d-flex flex-fill w-100 justify-content-center"><i>Stylist-2</i></div>
+        <div class="d-flex flex-fill w-100 justify-content-center"><i>{{ schedule.stylists.stylist2.name }}</i></div>
         <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
           <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
           </div>
@@ -117,7 +147,7 @@ month calendar end -->
         </div>
       </div>
       <div class="d-flex hairdresser" id="hairdresser-3">
-        <div class="d-flex flex-fill w-100 justify-content-center"><i>Stylist-3</i></div>
+        <div class="d-flex flex-fill w-100 justify-content-center"><i>{{ schedule.stylists.stylist3.name }}</i></div>
         <div class="d-flex flex-column hours flex-fill w-100 justify-content-center">
           <div class="d-flex hour flex-fill w-100 justify-content-center" *ngFor="let hour of hours">{{ hour }}
           </div>
@@ -149,5 +179,202 @@ month calendar end -->
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- week schedule end -->
+<!-- input start -->
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-12 d-flex" id="current-week">
+      <div class="d-flex flex-fill w-100 justify-content-center p-2">
+        <h3>{{ monthName }}, {{ year }} | week {{ week }}</h3>
+      </div>
+    </div>
+    <div class="col-12 d-flex flex-column" id="weekdays">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="day col-1">
+            <button class="btn btn-secondary day-button d-flex flex-column justify-content-center align-items-center"
+              id="monday" [routerLink]="['/current']">
+              <p class="m-1">{{ current | slice:0:3 }}</p>
+              <p class="m-1">{{ current | slice:7:10 }}</p>
+            </button>
+          </div>
+          <div class="day col-1">
+            <button class="btn btn-secondary day-button d-flex flex-column justify-content-center align-items-center"
+              id="tuesday" [routerLink]="['/second']">
+              <p class="m-1">{{ second | slice:0:3 }}</p>
+              <p class="m-1">{{ second | slice:7:10 }}</p>
+            </button>
+          </div>
+          <div class="day col-1">
+            <button class="btn btn-secondary day-button d-flex flex-column justify-content-center align-items-center"
+              id="wednesday" [routerLink]="['/third']">
+              <p class="m-1">{{ third | slice:0:3 }}</p>
+              <p class="m-1">{{ third | slice:7:10 }}</p>
+            </button>
+          </div>
+          <div class="day col-1">
+            <button class="btn btn-secondary day-button d-flex flex-column justify-content-center align-items-center"
+              id="thursday" [routerLink]="['/fourth']">
+              <p class="m-1">{{ fourth | slice:0:3 }}</p>
+              <p class="m-1">{{ fourth | slice:7:10 }}</p>
+            </button>
+          </div>
+          <div class="day col-1">
+            <button class="btn btn-secondary day-button d-flex flex-column justify-content-center align-items-center"
+              id="friday" [routerLink]="['/fifth']">
+              <p class="m-1">{{ fifth | slice:0:3 }}</p>
+              <p class="m-1">{{ fifth | slice:7:10 }}</p>
+            </button>
+          </div>
+          <div class="day col-1">
+            <button class="btn btn-secondary day-button d-flex flex-column justify-content-center align-items-center"
+              id="saturday" [routerLink]="['/sixth']">
+              <p class="m-1">{{ sixth | slice:0:3 }}</p>
+              <p class="m-1">{{ sixth | slice:7:10 }}</p>
+            </button>
+          </div>
+          <div class="day col-1">
+            <button class="btn btn-secondary day-button d-flex flex-column justify-content-center align-items-center"
+              id="sunday" [routerLink]="['/seventh']">
+              <p class="m-1">{{ seventh | slice:0:3 }}</p>
+              <p class="m-1">{{ seventh | slice:7:10 }}</p>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12">
+            <form (ngSubmit)="onSubmit(reservationForm)" #reservationForm="ngForm">
+              <div class="row">
+                <div class="col-5 m-1">
+                  <div class="form-group row" id="reservation-input">
+                    <label for="username" class="col-sm-2 col-form-label">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      placeholder="Full Name"
+                      ngModel
+                      name="name">
+                  </div>
+                </div>
+                <div class="col-5 m-1">
+                  <div class="form-group row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="Email"
+                      ngModel
+                      name="email">
+                  </div>
+                </div>
+              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <legend class="col-form-label col-sm-2 pt-0">Stylists</legend>
+                    <div class="col-sm-4">
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="radio" 
+                          id="stylist1"
+                          value="stylist1"
+                          ngModel 
+                          name="stylist1">
+                        <label class="form-check-label" for="stylist1">
+                          Jackie
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="radio" 
+                          id="stylist2" 
+                          value="stylist2"
+                          ngModel 
+                          name="stylist2">
+                        <label class="form-check-label" for="stylist2">
+                          Jill
+                        </label>
+                      </div>
+                      <div class="form-check disabled">
+                        <input 
+                          class="form-check-input" 
+                          type="radio" 
+                          id="stylist3" 
+                          value="stylist3"
+                          ngModel 
+                          name="stylist3">
+                        <label class="form-check-label" for="gridRadios3">
+                          John
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <legend class="col-form-label col-sm-2 pt-0">Time</legend>
+                    <div class="col-sm-4">
+                      <select 
+                        class="custom-select mr-sm-2"
+                        id="time"
+                        ngModel
+                        name="time">
+                        <option selected>Time</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                        <option value="15:30">15:30</option>
+                        <option value="16:00">16:00</option>
+                        <option value="16:30">16:30</option>
+                        <option value="17:00">17:00</option>
+                        <option value="17:30">17:30</option>
+                        <option value="18:00">18:00</option>
+                        <option value="18:30">18:30</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <legend class="col-form-label col-sm-2 pt-0">Day</legend>
+                    <div class="col-sm-6">
+                      <select 
+                        class="custom-select mr-sm-2"
+                        id="day"
+                        ngModel
+                        name="day">
+                        <option value="{{ current | slice:0:11 }}">{{ current | slice:0:11 }}</option>
+                        <option value="{{ second | slice:0:11 }}">{{ second | slice:0:11 }}</option>
+                        <option value="{{ third | slice:0:11 }}">{{ third | slice:0:11 }}</option>
+                        <option value="{{ fourth | slice:0:11 }}">{{ fourth | slice:0:11 }}</option>
+                        <option value="{{ fifth | slice:0:11 }}">{{ fifth | slice:0:11 }}</option>
+                        <option value="{{ sixth | slice:0:11 }}">{{ sixth | slice:0:11 }}</option>
+                        <option value="{{ seventh | slice:0:11 }}">{{ seventh | slice:0:11 }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <button class="btn btn-primary" type="submit">Make reservation</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- input end -->
