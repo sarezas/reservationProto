@@ -68,58 +68,103 @@ export class CalendarComponent implements OnInit {
   //   }
   // };
   @ViewChild('reservationForm') resForm: NgForm;
-  submitted = false;
-  reservation = {
-    clientName: '',
-    clientEmail: '',
-    stylist: '',
-    time: '',
-    day: ''
-  };
-  @ViewChild('Jackie') jackie: ElementRef;
-  @ViewChild('Jill') jill: ElementRef;
+  @ViewChild('jackie') jackie: ElementRef;
+  @ViewChild('jill') jill: ElementRef;
+  @ViewChild('john') john: ElementRef;
 
   constructor(private renderer: Renderer2) { }
 
-  ngOnInit() {
-    console.log(this.second);
-    // console.log(this.jackie.nativeElement.id === this.resForm.value.stylist.value);
-  }
-
-  // onSubmit(form: NgForm) {
-  //   console.log(form.value);
-  // }
-
-  // onSubmit() {
-  //   this.submitted = true;
-  //   console.log(this.resForm.value);
-  //   this.reservation.clientName = this.resForm.value.name;
-  //   this.reservation.clientEmail = this.resForm.value.email;
-  //   this.reservation.stylist = this.resForm.value.stylist;
-  //   this.reservation.time = this.resForm.value.time;
-  //   this.reservation.day = this.resForm.value.day;
-  //   console.log(typeof this.resForm.value.stylist);
-  //   console.log(Object.keys(this.resForm.value.stylist));
-  //   console.log(typeof this.jackie.nativeElement.id);
-  //   console.log(this.resForm.value.stylist === this.jackie.nativeElement.id);
-  //   this.resForm.reset();
-  // }
+  ngOnInit() {}
 
   onSubmit() {
-    if (this.resForm.value.stylist === this.jackie.nativeElement.id) {
-      const para = this.renderer.createElement('p');
-      const clientName = this.renderer.createText(this.resForm.value.name);
-      this.renderer.appendChild(para, clientName);
-      this.renderer.appendChild(this.jackie.nativeElement, para);
-      this.resForm.reset();
-    }
+    const jackieChildren = this.jackie.nativeElement.children;
+    const jillChildren = this.jill.nativeElement.children;
+    const johnChildren = this.john.nativeElement.children;
+    const compound = this.resForm.value.stylist + this.resForm.value.time;
+    const jackieMatch = jackieChildren.namedItem(compound);
+    const jillMatch = jillChildren.namedItem(compound);
+    const johnMatch = johnChildren.namedItem(compound);
+    console.log(jackieMatch);
+    console.log(jillMatch);
+    console.log(johnMatch);
 
-    if (this.resForm.value.stylist === this.jill.nativeElement.id) {
-      const para = this.renderer.createElement('p');
-      const clientName = this.renderer.createText(this.resForm.value.name);
-      this.renderer.appendChild(para, clientName);
-      this.renderer.appendChild(this.jill.nativeElement, para);
-      this.resForm.reset();
-    }
+    // switch (compound) {
+    //   case (compound === jackieMatch.id):
+    //     const p = this.renderer.createElement('p');
+    //     const clientName = this.renderer.createText(this.resForm.value.name);
+    //     this.renderer.appendChild(p, clientName);
+    //     this.renderer.appendChild(jackieMatch, p);
+    //     this.resForm.reset();
+    //     break;
+    //     console.log('aha!');
+    //   case (compound === jillMatch.id):
+    //     const par = this.renderer.createElement('p');
+    //     const clientName2 = this.renderer.createText(this.resForm.value.name);
+    //     this.renderer.appendChild(par, clientName2);
+    //     this.renderer.appendChild(jillMatch, par);
+    //     this.resForm.reset();
+    //     break;
+    //   case (compound === jackieMatch.id):
+    //     const para = this.renderer.createElement('p');
+    //     const clientName3 = this.renderer.createText(this.resForm.value.name);
+    //     this.renderer.appendChild(para, clientName3);
+    //     this.renderer.appendChild(jillMatch, para);
+    //     this.resForm.reset();
+    //     break;
+    // }
+
+    // // if (compound !== null) {
+    //   if (compound === jackieMatch.id) {
+    //     const p = this.renderer.createElement('p');
+    //     const clientName = this.renderer.createText(this.resForm.value.name);
+    //     this.renderer.appendChild(p, clientName);
+    //     this.renderer.appendChild(jackieMatch, p);
+    //     this.resForm.reset();
+    //   } else if (compound === jillMatch.id) {
+    //     const p = this.renderer.createElement('p');
+    //     const clientName = this.renderer.createText(this.resForm.value.name);
+    //     this.renderer.appendChild(p, clientName);
+    //     this.renderer.appendChild(jillMatch, p);
+    //     this.resForm.reset();
+    //   } else if (compound === johnMatch.id) {
+    //     const p = this.renderer.createElement('p');
+    //     const clientName = this.renderer.createText(this.resForm.value.name);
+    //     this.renderer.appendChild(p, clientName);
+    //     this.renderer.appendChild(johnMatch, p);
+    //     this.resForm.reset();
+    //   }
+    // }
+
+
+
+
+    // if (compound === this.jackie.nativeElement.id) {
+    //   const match = jackieChildren.namedItem(compound);
+    //   const p = this.renderer.createElement('p');
+    //   const clientName = this.renderer.createText(this.resForm.value.name);
+    //   this.renderer.appendChild(p, clientName);
+    //   this.renderer.appendChild(match, p);
+    //   this.resForm.reset();
+    // }
+
+
+    // if (compound === this.jill.nativeElement.id) {
+    //   const match = jillChildren.namedItem(compound);
+    //   const p = this.renderer.createElement('p');
+    //   const clientName = this.renderer.createText(this.resForm.value.name);
+    //   this.renderer.appendChild(p, clientName);
+    //   this.renderer.appendChild(match, p);
+    //   this.resForm.reset();
+    // }
+
+    // if (compound === this.john.nativeElement.id) {
+    //   const match = johnChildren.namedItem(compound);
+    //   const p = this.renderer.createElement('p');
+    //   const clientName = this.renderer.createText(this.resForm.value.name);
+    //   this.renderer.appendChild(p, clientName);
+    //   this.renderer.appendChild(match, p);
+    //   this.resForm.reset();
+    // }
+
   }
 }
