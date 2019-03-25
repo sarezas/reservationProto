@@ -249,126 +249,112 @@ month calendar end -->
             <router-outlet></router-outlet>
           </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5 d-flex justify-content-start align-items-center">
           <div class="col-12">
-            <form (ngSubmit)="onSubmit(reservationForm)" #reservationForm="ngForm">
+            <form (ngSubmit)="onSubmit()" #reservationForm="ngForm">
               <div class="row">
-                <div class="col-5 m-1">
-                  <div class="form-group row" id="reservation-input">
-                    <label for="username" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-3 col-md-5 ml-3">
+                  <div class="form-group" id="reservation-input">
+                    <!-- <label for="username" class="col-sm-2 col-form-label">Name</label> -->
                     <input
                       type="text"
                       class="form-control"
                       id="username"
-                      placeholder="Full Name"
+                      placeholder="First and last name"
                       ngModel
-                      name="name">
+                      name="name"
+                      required
+                      minlength="5"
+                      maxlength="35"
+                      #name="ngModel">
                   </div>
+                  <span class="help-block" *ngIf="!name.valid && name.touched">Not a valid name</span>
                 </div>
-                <div class="col-5 m-1">
-                  <div class="form-group row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-3 col-md-5 ml-3">
+                  <div class="form-group">
+                    <!-- <label for="email" class="col-sm-2 col-form-label">Email</label> -->
                     <input
                       type="email"
                       class="form-control"
                       id="email"
-                      placeholder="Email"
+                      placeholder="Email: one@two.three"
                       ngModel
-                      name="email">
+                      name="email"
+                      required
+                      email
+                      #email="ngModel">
+                  </div>
+                  <span class="help-block" *ngIf="!email.valid && email.touched">Not a valid email</span>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-start">
+                <div class="col-sm-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Stylists</legend>
+                  <div class="col-sm-9">
+                    <select class="custom-select mr-sm-2"
+                      id="stylist"
+                      placeholder="stylist"
+                      ngModel
+                      name="stylist"
+                      required
+                      #stylist="ngModel">
+                      <option value="Jackie">Jackie</option>
+                      <option value="Jill">Jill</option>
+                      <option value="John">John</option>
+                    </select>
+                    <span class="help-block" *ngIf="!stylist.valid && stylist.touched">No stylist selected</span>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Time</legend>
+                  <div class="col-sm-9">
+                    <select 
+                      class="custom-select mr-sm-2"
+                      id="time"
+                      ngModel
+                      name="time"
+                      required
+                      #time="ngModel">
+                      <option value="13:00">13:00</option>
+                      <option value="13:30">13:30</option>
+                      <option value="14:00">14:00</option>
+                      <option value="14:30">14:30</option>
+                      <option value="15:00">15:00</option>
+                      <option value="15:30">15:30</option>
+                      <option value="16:00">16:00</option>
+                      <option value="16:30">16:30</option>
+                      <option value="17:00">17:00</option>
+                      <option value="17:30">17:30</option>
+                      <option value="18:00">18:00</option>
+                      <option value="18:30">18:30</option>
+                    </select>
+                    <span class="help-block" *ngIf="!time.valid && time.touched">No time selected</span>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Day</legend>
+                  <div class="col-sm-9">
+                    <select 
+                      class="custom-select mr-sm-2"
+                      id="day"
+                      ngModel
+                      name="day"
+                      required
+                      #day="ngModel">
+                      <option value="{{ current | slice:0:11 }}">{{ current | slice:0:11 }}</option>
+                      <option value="{{ second | slice:0:11 }}">{{ second | slice:0:11 }}</option>
+                      <option value="{{ third | slice:0:11 }}">{{ third | slice:0:11 }}</option>
+                      <option value="{{ fourth | slice:0:11 }}">{{ fourth | slice:0:11 }}</option>
+                      <option value="{{ fifth | slice:0:11 }}">{{ fifth | slice:0:11 }}</option>
+                      <option value="{{ sixth | slice:0:11 }}">{{ sixth | slice:0:11 }}</option>
+                      <option value="{{ seventh | slice:0:11 }}">{{ seventh | slice:0:11 }}</option>
+                    </select>
+                    <span class="help-block" *ngIf="!day.valid && day.touched">No date selected</span>
                   </div>
                 </div>
               </div>
-              <fieldset class="form-group">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <legend class="col-form-label col-sm-2 pt-0">Stylists</legend>
-                    <div class="col-sm-4">
-                      <div class="form-check">
-                        <input 
-                          class="form-check-input" 
-                          type="radio" 
-                          id="stylist1"
-                          value="stylist1"
-                          ngModel 
-                          name="stylist1">
-                        <label class="form-check-label" for="stylist1">
-                          Jackie
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input 
-                          class="form-check-input" 
-                          type="radio" 
-                          id="stylist2" 
-                          value="stylist2"
-                          ngModel 
-                          name="stylist2">
-                        <label class="form-check-label" for="stylist2">
-                          Jill
-                        </label>
-                      </div>
-                      <div class="form-check disabled">
-                        <input 
-                          class="form-check-input" 
-                          type="radio" 
-                          id="stylist3" 
-                          value="stylist3"
-                          ngModel 
-                          name="stylist3">
-                        <label class="form-check-label" for="gridRadios3">
-                          John
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <legend class="col-form-label col-sm-2 pt-0">Time</legend>
-                    <div class="col-sm-4">
-                      <select 
-                        class="custom-select mr-sm-2"
-                        id="time"
-                        ngModel
-                        name="time">
-                        <option selected>Time</option>
-                        <option value="13:00">13:00</option>
-                        <option value="13:30">13:30</option>
-                        <option value="14:00">14:00</option>
-                        <option value="14:30">14:30</option>
-                        <option value="15:00">15:00</option>
-                        <option value="15:30">15:30</option>
-                        <option value="16:00">16:00</option>
-                        <option value="16:30">16:30</option>
-                        <option value="17:00">17:00</option>
-                        <option value="17:30">17:30</option>
-                        <option value="18:00">18:00</option>
-                        <option value="18:30">18:30</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <legend class="col-form-label col-sm-2 pt-0">Day</legend>
-                    <div class="col-sm-6">
-                      <select 
-                        class="custom-select mr-sm-2"
-                        id="day"
-                        ngModel
-                        name="day">
-                        <option value="{{ current | slice:0:11 }}">{{ current | slice:0:11 }}</option>
-                        <option value="{{ second | slice:0:11 }}">{{ second | slice:0:11 }}</option>
-                        <option value="{{ third | slice:0:11 }}">{{ third | slice:0:11 }}</option>
-                        <option value="{{ fourth | slice:0:11 }}">{{ fourth | slice:0:11 }}</option>
-                        <option value="{{ fifth | slice:0:11 }}">{{ fifth | slice:0:11 }}</option>
-                        <option value="{{ sixth | slice:0:11 }}">{{ sixth | slice:0:11 }}</option>
-                        <option value="{{ seventh | slice:0:11 }}">{{ seventh | slice:0:11 }}</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <div class="form-group row">
-                <div class="col-sm-10">
-                  <button class="btn btn-primary" type="submit">Make reservation</button>
-                </div>
+              <div class="col-sm-5 mt-3">
+                <button [disabled]="!reservationForm.valid" class="btn btn-primary" type="submit">Make reservation</button>
               </div>
             </form>
           </div>
@@ -378,3 +364,23 @@ month calendar end -->
   </div>
 </div>
 <!-- input end -->
+<!-- output start -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-6" id="Jackie" #Jackie>
+      <h4>Reservation data Jackie</h4>
+      <p>Client's name: {{ reservation.clientName }}</p>
+      <p>Client's email: {{ reservation.clientEmail }}</p>
+      <p>Stylist of choice: {{ reservation.stylist }}</p>
+      <p>Date of appointment: {{ reservation.day }}, {{ reservation.time }}</p>
+    </div>
+    <div class="col-sm-6 col-md-6" id="Jill" #Jill>
+      <h4>Reservation data Jill</h4>
+      <p>Client's name: {{ reservation.clientName }}</p>
+      <p>Client's email: {{ reservation.clientEmail }}</p>
+      <p>Stylist of choice: {{ reservation.stylist }}</p>
+      <p>Date of appointment: {{ reservation.day }}, {{ reservation.time }}</p>
+    </div>
+  </div>
+</div>
+<!-- output end -->

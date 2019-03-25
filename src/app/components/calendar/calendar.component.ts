@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 // import './slide.js';
 import * as moment from 'moment';
 import { NgForm } from '@angular/forms';
+import { clearResolutionOfComponentResourcesQueue } from '@angular/core/src/metadata/resource_loading';
 // import { SchedulerModel } from '../../models/scheduler.model';
 
 @Component({
@@ -66,13 +67,59 @@ export class CalendarComponent implements OnInit {
   //     }
   //   }
   // };
-  constructor() { }
+  @ViewChild('reservationForm') resForm: NgForm;
+  submitted = false;
+  reservation = {
+    clientName: '',
+    clientEmail: '',
+    stylist: '',
+    time: '',
+    day: ''
+  };
+  @ViewChild('Jackie') jackie: ElementRef;
+  @ViewChild('Jill') jill: ElementRef;
+
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
     console.log(this.second);
+    // console.log(this.jackie.nativeElement.id === this.resForm.value.stylist.value);
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form.value);
+  // onSubmit(form: NgForm) {
+  //   console.log(form.value);
+  // }
+
+  // onSubmit() {
+  //   this.submitted = true;
+  //   console.log(this.resForm.value);
+  //   this.reservation.clientName = this.resForm.value.name;
+  //   this.reservation.clientEmail = this.resForm.value.email;
+  //   this.reservation.stylist = this.resForm.value.stylist;
+  //   this.reservation.time = this.resForm.value.time;
+  //   this.reservation.day = this.resForm.value.day;
+  //   console.log(typeof this.resForm.value.stylist);
+  //   console.log(Object.keys(this.resForm.value.stylist));
+  //   console.log(typeof this.jackie.nativeElement.id);
+  //   console.log(this.resForm.value.stylist === this.jackie.nativeElement.id);
+  //   this.resForm.reset();
+  // }
+
+  onSubmit() {
+    if (this.resForm.value.stylist === this.jackie.nativeElement.id) {
+      const para = this.renderer.createElement('p');
+      const clientName = this.renderer.createText(this.resForm.value.name);
+      this.renderer.appendChild(para, clientName);
+      this.renderer.appendChild(this.jackie.nativeElement, para);
+      this.resForm.reset();
+    }
+
+    if (this.resForm.value.stylist === this.jill.nativeElement.id) {
+      const para = this.renderer.createElement('p');
+      const clientName = this.renderer.createText(this.resForm.value.name);
+      this.renderer.appendChild(para, clientName);
+      this.renderer.appendChild(this.jill.nativeElement, para);
+      this.resForm.reset();
+    }
   }
 }
