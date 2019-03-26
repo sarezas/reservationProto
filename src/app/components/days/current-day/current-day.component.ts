@@ -35,14 +35,15 @@ export class CurrentDayComponent implements OnInit {
     const jillMatch = jillChildren.namedItem(compound);
     const johnMatch = johnChildren.namedItem(compound);
 
-
-    console.log(jackieChildren);
-    console.log(compound);
-    console.log(jackieMatch);
-
     if (jackieMatch !== null && jackieMatch.id === compound) {
-      const p = this.renderer.createElement('p');
-      this.renderer.addClass(p, 'alert-danger');
+      const p = this.renderer.createElement('button');
+      this.renderer.addClass(p, 'btn');
+      this.renderer.addClass(p, 'btn-danger');
+      this.renderer.addClass(p, 'btn-sm');
+      this.renderer.listen(p, 'click', (event: any) => {
+        confirm('Remove the appointment?');
+        this.renderer.removeChild(jackieMatch, p);
+      });
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
       this.renderer.appendChild(jackieMatch, p);
@@ -50,8 +51,14 @@ export class CurrentDayComponent implements OnInit {
       return;
     }
     if (jillMatch !== null && jillMatch.id === compound) {
-      const p = this.renderer.createElement('p');
-      this.renderer.addClass(p, 'alert-danger');
+      const p = this.renderer.createElement('button');
+      this.renderer.addClass(p, 'btn');
+      this.renderer.addClass(p, 'btn-danger');
+      this.renderer.addClass(p, 'btn-sm');
+      this.renderer.listen(p, 'click', (event: any) => {
+        confirm('Remove the appointment?');
+        this.renderer.removeChild(jillMatch, p);
+      });
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
       this.renderer.appendChild(jillMatch, p);
@@ -59,8 +66,14 @@ export class CurrentDayComponent implements OnInit {
       return;
     }
     if (johnMatch !== null && johnMatch.id === compound) {
-      const p = this.renderer.createElement('p');
-      this.renderer.addClass(p, 'alert-danger');
+      const p = this.renderer.createElement('button');
+      this.renderer.addClass(p, 'btn');
+      this.renderer.addClass(p, 'btn-danger');
+      this.renderer.addClass(p, 'btn-sm');
+      this.renderer.listen(p, 'click', (event: any) => {
+        confirm('Remove the appointment?');
+        this.renderer.removeChild(johnMatch, p);
+      });
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
       this.renderer.appendChild(johnMatch, p);
@@ -68,5 +81,4 @@ export class CurrentDayComponent implements OnInit {
       return;
     }
   }
-
 }
