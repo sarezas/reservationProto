@@ -1,4 +1,4 @@
-<div class="container d-flex wrapper">
+<!-- <div class="container wrapper">
   <div class="col-1 time" title="time" style="background-color: red;">
     <div class="empty">
       <div class="hour-group">
@@ -50,7 +50,7 @@
     </div>
     <div class="row timetable">
       <div class="col-4 schedule-column">
-        <div class="table-row">a</div>
+        <div class="tabl/div>
         <div class="table-row">b</div>
         <div class="table-row">c</div>
         <div class="table-row">d</div>
@@ -68,4 +68,168 @@
     </div>
   </div>
 </div>
+ -->
+<!-- --------------------------------- -->
 
+<div class="container">
+  <div class="row">
+    <div class="col-1">
+      <div class="container clock">
+        <div class="row empty">&nbsp;</div>
+        <div class="row empty">&nbsp;</div>
+      </div>
+      <div class="container clock">
+        <div class="row hour">13:00</div>
+        <div class="row minute">30</div>
+      </div>
+      <div class="container clock">
+        <div class="row hour">14:00</div>
+        <div class="row minute">30</div>
+      </div>
+      <div class="container clock">
+        <div class="row hour">15:00</div>
+        <div class="row minute">30</div>
+      </div>
+      <div class="container clock">
+        <div class="row hour">16:00</div>
+        <div class="row minute">30</div>
+      </div>
+      <div class="container clock">
+        <div class="row hour">17:00</div>
+        <div class="row minute">30</div>
+      </div>
+      <div class="container clock">
+        <div class="row hour">18:00</div>
+        <div class="row minute">30</div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="container" #jackie>
+        <div class="row name mx-auto">Jackie</div>
+        <div class="row hour">&nbsp;</div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie13:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie13:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie14:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie14:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie15:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie15:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie16:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie16:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie17:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie17:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie18:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jackie18:30"></div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="container" #jill>
+        <div class="row mx-auto name">Jill</div>
+        <div class="row hour">&nbsp;</div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill13:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill13:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill14:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill14:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill15:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill15:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill16:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill16:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill17:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill17:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill18:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}Jill18:30"></div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="container" #john>
+        <div class="row mx-auto name">John</div>
+        <div class="row hour">&nbsp;</div>
+        <div class="row hour" id="{{current | slice:0:3}}John13:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John13:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John14:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John14:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John15:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John15:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John16:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John16:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John17:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John17:30"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John18:00"></div>
+        <div class="row hour" id="{{current | slice:0:3}}John18:30"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-12" id="form-wrapper">
+      <form (ngSubmit)="onSubmit()" #reservationForm="ngForm">
+        <div class="row">
+          <div class="col-sm-3 col-md-5 ml-3">
+            <div class="form-group" id="reservation-input">
+              <input type="text" class="form-control" id="username" placeholder="First and last name" ngModel name="name"
+                required minlength="5" maxlength="35" #name="ngModel">
+            </div>
+            <span class="help-block" *ngIf="!name.valid && name.touched">Not a valid name</span>
+          </div>
+          <div class="col-sm-3 col-md-5 ml-3">
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" placeholder="Email: one@two.three" ngModel name="email"
+                required email #email="ngModel">
+            </div>
+            <span class="help-block" *ngIf="!email.valid && email.touched">Not a valid email</span>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-start">
+          <div class="col-sm-3">
+            <legend class="col-form-label col-sm-2 pt-0">Stylists</legend>
+            <div class="col-sm-9">
+              <select class="custom-select mr-sm-2" id="stylist" placeholder="stylist" ngModel name="stylist" required
+                #stylist="ngModel">
+                <option value="Jackie">Jackie</option>
+                <option value="Jill">Jill</option>
+                <option value="John">John</option>
+              </select>
+              <span class="help-block" *ngIf="!stylist.valid && stylist.touched">No stylist selected</span>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <legend class="col-form-label col-sm-2 pt-0">Time</legend>
+            <div class="col-sm-9">
+              <select class="custom-select mr-sm-2" id="time" ngModel name="time" required #time="ngModel">
+                <option value="13:00">13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="14:30">14:30</option>
+                <option value="15:00">15:00</option>
+                <option value="15:30">15:30</option>
+                <option value="16:00">16:00</option>
+                <option value="16:30">16:30</option>
+                <option value="17:00">17:00</option>
+                <option value="17:30">17:30</option>
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+              </select>
+              <span class="help-block" *ngIf="!time.valid && time.touched">No time selected</span>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <legend class="col-form-label col-sm-2 pt-0">Day</legend>
+            <div class="col-sm-9">
+              <select class="custom-select mr-sm-2" id="day" ngModel name="day" required #day="ngModel">
+                <option value="{{ current | slice:0:11 }}">{{ current | slice:0:11 }}</option>
+                <option value="{{ second | slice:0:11 }}">{{ second | slice:0:11 }}</option>
+                <option value="{{ third | slice:0:11 }}">{{ third | slice:0:11 }}</option>
+                <option value="{{ fourth | slice:0:11 }}">{{ fourth | slice:0:11 }}</option>
+                <option value="{{ fifth | slice:0:11 }}">{{ fifth | slice:0:11 }}</option>
+                <option value="{{ sixth | slice:0:11 }}">{{ sixth | slice:0:11 }}</option>
+                <option value="{{ seventh | slice:0:11 }}">{{ seventh | slice:0:11 }}</option>
+              </select>
+              <span class="help-block" *ngIf="!day.valid && day.touched">No date selected</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 mt-3">
+          <button [disabled]="!reservationForm.valid" class="btn btn-primary" type="submit">Make reservation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

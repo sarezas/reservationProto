@@ -23,21 +23,6 @@ export class CalendarComponent implements OnInit {
   sixth = moment(this.current).add(5, 'd').toString();
   seventh = moment(this.current).add(6, 'd').toString();
 
-  @Input() weekDays = [this.current, this.second, this.third, this.fourth, this.fifth, this.sixth, this.seventh];
-  @Input() times: any = [
-    '13:00',
-    '13:30',
-    '14:00',
-    '14:30',
-    '15:00',
-    '15:30',
-    '16:00',
-    '16:30',
-    '17:00',
-    '17:30',
-    '18:00',
-    '18:30'
-  ];
   @ViewChild('reservationForm') resForm: NgForm;
   @ViewChild('jackie') jackie: ElementRef;
   @ViewChild('jill') jill: ElementRef;
@@ -45,10 +30,12 @@ export class CalendarComponent implements OnInit {
 
   constructor(private renderer: Renderer2) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.current);
+  }
 
   onSubmit() {
-    const compound = this.resForm.value.stylist + this.resForm.value.time;
+    const compound = this.resForm.value.day.slice(0, 3) + this.resForm.value.stylist + this.resForm.value.time;
     const jackieChildren = this.jackie.nativeElement.children;
     const jillChildren = this.jill.nativeElement.children;
     const johnChildren = this.john.nativeElement.children;
@@ -56,8 +43,11 @@ export class CalendarComponent implements OnInit {
     const jillMatch = jillChildren.namedItem(compound);
     const johnMatch = johnChildren.namedItem(compound);
 
+    console.log(compound);
+
     if (jackieMatch !== null && jackieMatch.id === compound) {
       const p = this.renderer.createElement('p');
+      this.renderer.addClass(p, 'alert-danger');
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
       this.renderer.appendChild(jackieMatch, p);
@@ -66,6 +56,7 @@ export class CalendarComponent implements OnInit {
     }
     if (jillMatch !== null && jillMatch.id === compound) {
       const p = this.renderer.createElement('p');
+      this.renderer.addClass(p, 'alert-danger');
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
       this.renderer.appendChild(jillMatch, p);
@@ -74,6 +65,7 @@ export class CalendarComponent implements OnInit {
     }
     if (johnMatch !== null && johnMatch.id === compound) {
       const p = this.renderer.createElement('p');
+      this.renderer.addClass(p, 'alert-danger');
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
       this.renderer.appendChild(johnMatch, p);
