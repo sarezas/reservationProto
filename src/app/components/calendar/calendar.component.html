@@ -11,49 +11,49 @@
         <div class="row d-flex justify-content-center">
           <div class="day col-1">
             <button class="btn btn-primary day-button d-flex flex-column justify-content-center align-items-center"
-              id="monday" [routerLink]="['/current']">
+              id="current" [routerLink]="['/current']" (click)="toggleClass('current')">
               <p class="m-1">{{ current | slice:0:3 }}</p>
               <p class="m-1">{{ current | slice:7:10 }}</p>
             </button>
           </div>
           <div class="day col-1">
             <button class="btn btn-primary day-button d-flex flex-column justify-content-center align-items-center"
-              id="tuesday" [routerLink]="['/second']">
+              id="second" [routerLink]="['/second']" (click)="toggleClass('second')">
               <p class="m-1">{{ second | slice:0:3 }}</p>
               <p class="m-1">{{ second | slice:7:10 }}</p>
             </button>
           </div>
           <div class="day col-1">
             <button class="btn btn-primary day-button d-flex flex-column justify-content-center align-items-center"
-              id="wednesday" [routerLink]="['/third']">
+              id="third" [routerLink]="['/third']" (click)="toggleClass('third')">
               <p class="m-1">{{ third | slice:0:3 }}</p>
               <p class="m-1">{{ third | slice:7:10 }}</p>
             </button>
           </div>
           <div class="day col-1">
             <button class="btn btn-primary day-button d-flex flex-column justify-content-center align-items-center"
-              id="thursday" [routerLink]="['/fourth']">
+              id="fourth" [routerLink]="['/fourth']" (click)="toggleClass('fourth')">
               <p class="m-1">{{ fourth | slice:0:3 }}</p>
               <p class="m-1">{{ fourth | slice:7:10 }}</p>
             </button>
           </div>
           <div class="day col-1">
             <button class="btn btn-primary day-button d-flex flex-column justify-content-center align-items-center"
-              id="friday" [routerLink]="['/fifth']">
+              id="fifth" [routerLink]="['/fifth']" (click)="toggleClass('fifth')">
               <p class="m-1">{{ fifth | slice:0:3 }}</p>
               <p class="m-1">{{ fifth | slice:7:10 }}</p>
             </button>
           </div>
           <div class="day col-1">
             <button class="btn btn-primary day-button d-flex flex-column justify-content-center align-items-center"
-              id="saturday" [routerLink]="['/sixth']">
+              id="sixth" [routerLink]="['/sixth']" (click)="toggleClass('sixth')">
               <p class="m-1">{{ sixth | slice:0:3 }}</p>
               <p class="m-1">{{ sixth | slice:7:10 }}</p>
             </button>
           </div>
           <div class="day col-1">
             <button class="btn btn-primary day-button d-flex flex-column justify-content-center align-items-center"
-              id="sunday" [routerLink]="['/seventh']">
+              id="seventh" [routerLink]="['/seventh']" (click)="toggleClass('seventh')">
               <p class="m-1">{{ seventh | slice:0:3 }}</p>
               <p class="m-1">{{ seventh | slice:7:10 }}</p>
             </button>

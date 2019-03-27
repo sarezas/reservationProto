@@ -27,7 +27,7 @@ export class CurrentDayComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    const compound = this.resForm.value.day.slice(0, 3) + this.resForm.value.stylist + this.resForm.value.time;
+    const compound = this.current.slice(0, 3) + this.resForm.value.stylist + this.resForm.value.time;
     const jackieChildren = this.jackie.nativeElement.children;
     const jillChildren = this.jill.nativeElement.children;
     const johnChildren = this.john.nativeElement.children;

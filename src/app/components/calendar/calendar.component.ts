@@ -27,6 +27,7 @@ export class CalendarComponent implements OnInit {
   @ViewChild('jackie') jackie: ElementRef;
   @ViewChild('jill') jill: ElementRef;
   @ViewChild('john') john: ElementRef;
+  selected  = true;
 
   constructor(private renderer: Renderer2) {}
 
@@ -73,4 +74,18 @@ export class CalendarComponent implements OnInit {
       return;
     }
   }
+
+  toggleClass(id: string) {
+    const button = document.getElementById(id);
+    button.classList.add('selected');
+    // button.children.classList.add('selected');
+    const siblings = document.querySelectorAll('.day-button');
+    for (let i = 0; i < siblings.length; i++)  {
+      if (siblings[i] === button) {
+        continue;
+      }
+      siblings[i].classList.remove('selected');
+    }
+  }
+
 }

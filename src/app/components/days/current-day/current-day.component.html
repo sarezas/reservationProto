@@ -210,7 +210,7 @@
               <span class="help-block" *ngIf="!time.valid && time.touched">No time selected</span>
             </div>
           </div>
-          <div class="col-sm-3">
+          <!-- <div class="col-sm-3">
             <legend class="col-form-label col-sm-2 pt-0">Day</legend>
             <div class="col-sm-9">
               <select class="custom-select mr-sm-2" id="day" ngModel name="day" required #day="ngModel">
@@ -224,7 +224,7 @@
               </select>
               <span class="help-block" *ngIf="!day.valid && day.touched">No date selected</span>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="col-sm-5 mt-3">
           <button [disabled]="!reservationForm.valid" class="btn btn-primary" type="submit">Make reservation</button>
