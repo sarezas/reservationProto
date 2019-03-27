@@ -34,15 +34,21 @@ export class CurrentDayComponent implements OnInit {
     const jackieMatch = jackieChildren.namedItem(compound);
     const jillMatch = jillChildren.namedItem(compound);
     const johnMatch = johnChildren.namedItem(compound);
+    const email = this.resForm.value.email;
 
     if (jackieMatch !== null && jackieMatch.id === compound) {
       const p = this.renderer.createElement('button');
       this.renderer.addClass(p, 'btn');
       this.renderer.addClass(p, 'btn-danger');
       this.renderer.addClass(p, 'btn-sm');
-      this.renderer.listen(p, 'click', (event: any) => {
-        confirm('Remove the appointment?');
-        this.renderer.removeChild(jackieMatch, p);
+      this.renderer.setAttribute(p, 'title', 'push to remove');
+      this.renderer.listen(p, 'click', () => {
+        const confirm = prompt('To remove, enter the registered email');
+        if (confirm !== null && confirm === email) {
+          this.renderer.removeChild(jackieMatch, p);
+        } else {
+          alert('The email does not match! Please try again.');
+        }
       });
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
@@ -55,9 +61,14 @@ export class CurrentDayComponent implements OnInit {
       this.renderer.addClass(p, 'btn');
       this.renderer.addClass(p, 'btn-danger');
       this.renderer.addClass(p, 'btn-sm');
-      this.renderer.listen(p, 'click', (event: any) => {
-        confirm('Remove the appointment?');
-        this.renderer.removeChild(jillMatch, p);
+      this.renderer.setAttribute(p, 'title', 'push to remove');
+      this.renderer.listen(p, 'click', () => {
+        const confirm = prompt('To remove, enter the registered email');
+        if (confirm !== null && confirm === email) {
+          this.renderer.removeChild(jillMatch, p);
+        } else {
+          alert('The email does not match! Please try again.');
+        }
       });
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
@@ -70,9 +81,14 @@ export class CurrentDayComponent implements OnInit {
       this.renderer.addClass(p, 'btn');
       this.renderer.addClass(p, 'btn-danger');
       this.renderer.addClass(p, 'btn-sm');
-      this.renderer.listen(p, 'click', (event: any) => {
-        confirm('Remove the appointment?');
-        this.renderer.removeChild(johnMatch, p);
+      this.renderer.setAttribute(p, 'title', 'push to remove');
+      this.renderer.listen(p, 'click', () => {
+        const confirm = prompt('To remove, enter the registered email');
+        if (confirm !== null && confirm === email) {
+          this.renderer.removeChild(johnMatch, p);
+        } else {
+          alert('The email does not match! Please try again.');
+        }
       });
       const clientName = this.renderer.createText(this.resForm.value.name);
       this.renderer.appendChild(p, clientName);
